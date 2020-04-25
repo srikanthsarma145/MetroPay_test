@@ -1,33 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:metropay_test/utilities/constants.dart';
-import './signup_screen.dart';
-import './forgetpassword_screen.dart';
-import './homepage_screen.dart';
-import 'package:toast/toast.dart';
 
-
-class LoginScreen extends StatefulWidget {
+class SignupScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
-
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
 
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  var userName = 'abc';
-  var passWord = '123';
-
-//  @override
-//  void dispose() {
-//    // Clean up the controller when the widget is disposed.
-//    usernameController.dispose();
-//    passwordController.dispose();
-//    super.dispose();
-//  }
+  Widget _buildNameTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Name',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            keyboardType: TextInputType.text,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
+              hintText: 'Enter your Name',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
   Widget _buildEmailTF() {
     return Column(
@@ -43,7 +59,6 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: usernameController,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.white,
@@ -79,7 +94,6 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: passwordController,
             obscureText: true,
             style: TextStyle(
               color: Colors.white,
@@ -95,68 +109,63 @@ class _LoginScreenState extends State<LoginScreen> {
               hintText: 'Enter your Password',
               hintStyle: kHintTextStyle,
             ),
-            keyboardType: TextInputType.text,
           ),
         ),
       ],
     );
   }
 
-  Widget _buildForgotPasswordBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: FlatButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ForgetScreen()),
-          );
-        },
-        padding: EdgeInsets.only(right: 0.0),
-        child: Text(
-          'Forgot Password?',
+  Widget _buildConfirmPasswordTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Confirm Password',
           style: kLabelStyle,
         ),
-      ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            obscureText: true,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.vpn_key,
+                color: Colors.white,
+              ),
+              hintText: 'Confirm your Password',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
     );
   }
 
-
-  Widget _buildLoginBtn() {
+  Widget _buildSignupBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 4.0,
-        onPressed: () {
-
-          if ((usernameController.text == userName) && (passwordController.text == passWord)) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomeScreen(/*userId: userName,*/)),
-            );
-          }
-          // ignore: unrelated_type_equality_checks
-          else if((usernameController.text == "") && (passwordController.text == "")){
-            Toast.show("Enter Username and Password", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
-          }
-          else if((usernameController.text == "") && (passwordController.text != "")){
-            Toast.show("Enter Username", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
-          }
-          else if((usernameController.text != "") && (passwordController.text == "")){
-            Toast.show("Enter Password", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
-          }
-          else{
-            Toast.show("Invalid Username or Password", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
-          }
-        },
+          onPressed: () {
+            Navigator.pop(context);
+          },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
 //        color: Colors.white,
         child: Text(
-          'LOGIN',
+          'SIGNUP',
           style: TextStyle(
 //            color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -164,39 +173,6 @@ class _LoginScreenState extends State<LoginScreen> {
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans',
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSignUpBtn() {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => SignupScreen()),
-        );
-      },
-      child: RichText(
-        text: TextSpan(
-          children: [
-            TextSpan(
-              text: 'Don\'t have an Account? ',
-              style: TextStyle(
-//                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            TextSpan(
-              text: 'Sign Up',
-              style: TextStyle(
-//                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
         ),
       ),
     );
@@ -212,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Stack(
             children: <Widget>[
               Container(
-                height: double.infinity,
+//                height: double.infinity,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -234,7 +210,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 140.0,
+                    vertical: 60.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -248,15 +224,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 30.0),
+                      SizedBox(height: 25.0),
+                      _buildNameTF(),
+                      SizedBox(height: 25.0),
                       _buildEmailTF(),
-                      SizedBox(
-                        height: 30.0,
-                      ),
+                      SizedBox(height: 25.0),
                       _buildPasswordTF(),
-                      _buildForgotPasswordBtn(),
-                      _buildLoginBtn(),
-                      _buildSignUpBtn(),
+                      SizedBox(height: 25.0),
+                      _buildConfirmPasswordTF(),
+                      SizedBox(height: 5.0),
+                      _buildSignupBtn(),
                     ],
                   ),
                 ),

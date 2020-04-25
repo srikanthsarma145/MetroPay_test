@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_login_ui/screens/login_screen.dart';
+import 'package:metropay_test/screens/login_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,9 +8,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Login UI',
-      debugShowCheckedModeBanner: false,
+      title: 'MetroPay_test',
+      theme: ThemeData(
+//          canvasColor: Color(0xffffffff),
+          buttonTheme: ButtonThemeData(
+            buttonColor: Color(0xffffffff),
+          )
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+          canvasColor: Color(0xffffffff),
+          buttonTheme: ButtonThemeData(
+            buttonColor: Color(0xff454545),
+          )
+      ),
+//      debugShowCheckedModeBanner: false, //remove comment to remove debug tag
       home: LoginScreen(),
     );
   }
 }
+
