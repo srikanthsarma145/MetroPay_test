@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:metropay_test/utilities/constants.dart';
+import './confirmOTP.dart';
 
 class SignupScreen extends StatefulWidget {
   @override
@@ -45,12 +46,47 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  Widget _buildEmailTF() {
+//  Widget _buildEmailTF() {
+//    return Column(
+//      crossAxisAlignment: CrossAxisAlignment.start,
+//      children: <Widget>[
+//        Text(
+//          'Email',
+//          style: kLabelStyle,
+//        ),
+//        SizedBox(height: 10.0),
+//        Container(
+//          alignment: Alignment.centerLeft,
+//          decoration: kBoxDecorationStyle,
+//          height: 60.0,
+//          child: TextField(
+//            keyboardType: TextInputType.emailAddress,
+//            style: TextStyle(
+//              color: Colors.white,
+//              fontFamily: 'OpenSans',
+//            ),
+//            decoration: InputDecoration(
+//              border: InputBorder.none,
+//              contentPadding: EdgeInsets.only(top: 14.0),
+//              prefixIcon: Icon(
+//                Icons.alternate_email,
+//                color: Colors.white,
+//              ),
+//              hintText: 'Enter your Email',
+//              hintStyle: kHintTextStyle,
+//            ),
+//          ),
+//        ),
+//      ],
+//    );
+//  }
+
+  Widget _buildMobileNumberTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Email',
+          'Mobile Number',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -59,7 +95,7 @@ class _SignupScreenState extends State<SignupScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.phone,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'OpenSans',
@@ -68,10 +104,10 @@ class _SignupScreenState extends State<SignupScreen> {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.alternate_email,
+                Icons.phone,
                 color: Colors.white,
               ),
-              hintText: 'Enter your Email',
+              hintText: 'Enter your Mobile Number',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -157,7 +193,10 @@ class _SignupScreenState extends State<SignupScreen> {
       child: RaisedButton(
         elevation: 4.0,
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ConfirmOTP()),
+            );
           },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -210,7 +249,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 60.0,
+                    vertical: 90.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -226,8 +265,10 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       SizedBox(height: 25.0),
                       _buildNameTF(),
+//                      SizedBox(height: 25.0),
+//                      _buildEmailTF(),
                       SizedBox(height: 25.0),
-                      _buildEmailTF(),
+                      _buildMobileNumberTF(),
                       SizedBox(height: 25.0),
                       _buildPasswordTF(),
                       SizedBox(height: 25.0),
