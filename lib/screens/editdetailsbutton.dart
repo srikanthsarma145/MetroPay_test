@@ -42,11 +42,11 @@ class _EditDetailsButtonState extends State<EditDetailsButton> {
                   hintText: fullName, fillColor: Colors.white),
               keyboardType: TextInputType.text,
             ),
-            new TextFormField(
-              decoration: new InputDecoration(
-                  hintText: mobile.toString(), fillColor: Colors.white),
-              keyboardType: TextInputType.phone,
-            ),
+//            new TextFormField(
+//              decoration: new InputDecoration(
+//                  hintText: mobile.toString(), fillColor: Colors.white),
+//              keyboardType: TextInputType.phone,
+//            ),
             new TextFormField(
               decoration: new InputDecoration(
                   hintText: emailId, fillColor: Colors.white),

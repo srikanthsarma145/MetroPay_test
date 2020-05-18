@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:metropay_test/utilities/constants.dart';
-import './confirmOTP.dart';
 
 class SignupScreen extends StatefulWidget {
   @override
@@ -10,6 +9,11 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+
+  final mobileNoController = TextEditingController();
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   Widget _buildNameTF() {
     return Column(
@@ -25,6 +29,7 @@ class _SignupScreenState extends State<SignupScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: usernameController,
             keyboardType: TextInputType.text,
             style: TextStyle(
               color: Colors.white,
@@ -46,47 +51,12 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-//  Widget _buildEmailTF() {
-//    return Column(
-//      crossAxisAlignment: CrossAxisAlignment.start,
-//      children: <Widget>[
-//        Text(
-//          'Email',
-//          style: kLabelStyle,
-//        ),
-//        SizedBox(height: 10.0),
-//        Container(
-//          alignment: Alignment.centerLeft,
-//          decoration: kBoxDecorationStyle,
-//          height: 60.0,
-//          child: TextField(
-//            keyboardType: TextInputType.emailAddress,
-//            style: TextStyle(
-//              color: Colors.white,
-//              fontFamily: 'OpenSans',
-//            ),
-//            decoration: InputDecoration(
-//              border: InputBorder.none,
-//              contentPadding: EdgeInsets.only(top: 14.0),
-//              prefixIcon: Icon(
-//                Icons.alternate_email,
-//                color: Colors.white,
-//              ),
-//              hintText: 'Enter your Email',
-//              hintStyle: kHintTextStyle,
-//            ),
-//          ),
-//        ),
-//      ],
-//    );
-//  }
-
-  Widget _buildMobileNumberTF() {
+  Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Mobile Number',
+          'Email',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -95,7 +65,7 @@ class _SignupScreenState extends State<SignupScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            keyboardType: TextInputType.phone,
+            keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'OpenSans',
@@ -104,10 +74,10 @@ class _SignupScreenState extends State<SignupScreen> {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.phone,
+                Icons.alternate_email,
                 color: Colors.white,
               ),
-              hintText: 'Enter your Mobile Number',
+              hintText: 'Enter your Email',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -115,6 +85,42 @@ class _SignupScreenState extends State<SignupScreen> {
       ],
     );
   }
+
+//  Widget _buildMobileNumberTF() {
+//    return Column(
+//      crossAxisAlignment: CrossAxisAlignment.start,
+//      children: <Widget>[
+//        Text(
+//          'Mobile Number',
+//          style: kLabelStyle,
+//        ),
+//        SizedBox(height: 10.0),
+//        Container(
+//          alignment: Alignment.centerLeft,
+//          decoration: kBoxDecorationStyle,
+//          height: 60.0,
+//          child: TextField(
+//            controller: mobileNoController,
+//            keyboardType: TextInputType.phone,
+//            style: TextStyle(
+//              color: Colors.white,
+//              fontFamily: 'OpenSans',
+//            ),
+//            decoration: InputDecoration(
+//              border: InputBorder.none,
+//              contentPadding: EdgeInsets.only(top: 14.0),
+//              prefixIcon: Icon(
+//                Icons.phone,
+//                color: Colors.white,
+//              ),
+//              hintText: 'Enter your Mobile Number',
+//              hintStyle: kHintTextStyle,
+//            ),
+//          ),
+//        ),
+//      ],
+//    );
+//  }
 
   Widget _buildPasswordTF() {
     return Column(
@@ -130,6 +136,7 @@ class _SignupScreenState extends State<SignupScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: passwordController,
             obscureText: true,
             style: TextStyle(
               color: Colors.white,
@@ -165,6 +172,7 @@ class _SignupScreenState extends State<SignupScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: confirmPasswordController,
             obscureText: true,
             style: TextStyle(
               color: Colors.white,
@@ -193,9 +201,8 @@ class _SignupScreenState extends State<SignupScreen> {
       child: RaisedButton(
         elevation: 4.0,
           onPressed: () {
-            Navigator.push(
+            Navigator.pop(
               context,
-              MaterialPageRoute(builder: (context) => ConfirmOTP()),
             );
           },
         padding: EdgeInsets.all(15.0),
@@ -265,10 +272,10 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       SizedBox(height: 25.0),
                       _buildNameTF(),
-//                      SizedBox(height: 25.0),
-//                      _buildEmailTF(),
                       SizedBox(height: 25.0),
-                      _buildMobileNumberTF(),
+                      _buildEmailTF(),
+//                      SizedBox(height: 25.0),
+//                      _buildMobileNumberTF(),
                       SizedBox(height: 25.0),
                       _buildPasswordTF(),
                       SizedBox(height: 25.0),
