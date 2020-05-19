@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:metropay_test/screens/PaymentSelectionButton.dart';
+import 'package:metropay_test/screens/RedirectButton.dart';
 
-class AddMoneyButton extends StatefulWidget {
+class PaymentSelectionButton extends StatefulWidget {
   @override
-  _AddMoneyButtonState createState() => _AddMoneyButtonState();
+  _PaymentSelectionButtonState createState() => _PaymentSelectionButtonState();
 }
 
-class _AddMoneyButtonState extends State<AddMoneyButton> {
-  final amountController = TextEditingController();
+class _PaymentSelectionButtonState extends State<PaymentSelectionButton> {
 
-  var amount = 0.00;
+
+
 
   Widget _walletAmount() {
     return Card(
@@ -21,7 +21,7 @@ class _AddMoneyButtonState extends State<AddMoneyButton> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Text(
-              'Amount',
+              'Choose payment Method',
               style: TextStyle(
                 fontSize: 20.0,
                 letterSpacing: 0.8,
@@ -36,31 +36,24 @@ class _AddMoneyButtonState extends State<AddMoneyButton> {
               margin: const EdgeInsets.only(left: 0.0, right: 190.0),
             ),
             // SizedBox(height: 15.0),
-            new TextFormField(
-              controller: amountController,
-              decoration: new InputDecoration(
-                  hintText: "Enter Amount", fillColor: Colors.white),
-              keyboardType: TextInputType.number,
-            ),
-        ],
+          ],
         ),
       ),
     );
   }
 
-  Widget _addAmountBtn() {
+  Widget _UpiBtn() {
     return Container(
       padding: EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 0.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 4.0,
         onPressed: () {
-          //Navigator.pop(context,amountController);
-          //Navigator.push(context, PaymentSelectionButton);
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => PaymentSelectionButton()),
+            MaterialPageRoute(builder: (context) => RedirectButton()),
           );
+
         },
         padding: EdgeInsets.all(10.0),
         shape: RoundedRectangleBorder(
@@ -68,7 +61,7 @@ class _AddMoneyButtonState extends State<AddMoneyButton> {
         ),
 //        color: Colors.white,
         child: Text(
-          'Add to wallet',
+          'G-Pay/UPI',
           style: TextStyle(
 //            color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -80,7 +73,68 @@ class _AddMoneyButtonState extends State<AddMoneyButton> {
       ),
     );
   }
+  Widget _CardBtn() {
+    return Container(
+      padding: EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 0.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 4.0,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => RedirectButton()),
+          );
 
+        },
+        padding: EdgeInsets.all(10.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+//        color: Colors.white,
+        child: Text(
+          'Debit/Credit Card',
+          style: TextStyle(
+//            color: Color(0xFF527DAA),
+            letterSpacing: 1.5,
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
+  Widget _NetBankBtn() {
+    return Container(
+      padding: EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 0.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 4.0,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => RedirectButton()),
+          );
+
+        },
+        padding: EdgeInsets.all(10.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+//        color: Colors.white,
+        child: Text(
+          'Net-Banking ',
+          style: TextStyle(
+//            color: Color(0xFF527DAA),
+            letterSpacing: 1.5,
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +185,9 @@ class _AddMoneyButtonState extends State<AddMoneyButton> {
                       SizedBox(height: 30.0),
                       _walletAmount(),
 //                      SizedBox(height: 10.0),
-                      _addAmountBtn(),
+                      _UpiBtn(),
+                      _CardBtn(),
+                      _NetBankBtn(),
 //                      SizedBox(height: 10.0),
                     ],
                   ),
