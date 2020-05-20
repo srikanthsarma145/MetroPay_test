@@ -23,7 +23,7 @@ class _PaymentSelectionButtonState extends State<PaymentSelectionButton> {
             Text(
               'Choose payment Method',
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 18.0,
                 letterSpacing: 0.8,
                 fontFamily: 'OpenSans',
                 fontWeight: FontWeight.bold,
@@ -60,8 +60,12 @@ class _PaymentSelectionButtonState extends State<PaymentSelectionButton> {
           borderRadius: BorderRadius.circular(5.0),
         ),
 //        color: Colors.white,
-        child: Text(
-          'G-Pay/UPI',
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Icon(Icons.account_balance_wallet),
+             Text(
+          'Gpay/UPI/e-wallet',
           style: TextStyle(
 //            color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -69,6 +73,8 @@ class _PaymentSelectionButtonState extends State<PaymentSelectionButton> {
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans',
           ),
+        ),
+          ],
         ),
       ),
     );
@@ -91,7 +97,11 @@ class _PaymentSelectionButtonState extends State<PaymentSelectionButton> {
           borderRadius: BorderRadius.circular(5.0),
         ),
 //        color: Colors.white,
-        child: Text(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Icon(Icons.credit_card),
+             Text(
           'Debit/Credit Card',
           style: TextStyle(
 //            color: Color(0xFF527DAA),
@@ -100,6 +110,8 @@ class _PaymentSelectionButtonState extends State<PaymentSelectionButton> {
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans',
           ),
+        ),
+          ],
         ),
       ),
     );
@@ -122,8 +134,12 @@ class _PaymentSelectionButtonState extends State<PaymentSelectionButton> {
           borderRadius: BorderRadius.circular(5.0),
         ),
 //        color: Colors.white,
-        child: Text(
-          'Net-Banking ',
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Icon(Icons.account_balance),
+             Text(
+          'Net-Banking',
           style: TextStyle(
 //            color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -131,6 +147,8 @@ class _PaymentSelectionButtonState extends State<PaymentSelectionButton> {
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans',
           ),
+        ),
+          ],
         ),
       ),
     );

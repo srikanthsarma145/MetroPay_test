@@ -10,10 +10,12 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
 
-  final mobileNoController = TextEditingController();
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
+// final mobileNoController = TextEditingController();
+//   final usernameController = TextEditingController();
+//   final passwordController = TextEditingController();
+//   final confirmPasswordController = TextEditingController();
+
+String emailId,userName,passWord,confirmPassword;
 
   Widget _buildNameTF() {
     return Column(
@@ -29,8 +31,11 @@ class _SignupScreenState extends State<SignupScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: usernameController,
+            // controller: usernameController,
             keyboardType: TextInputType.text,
+            onChanged: (Text){
+              userName = Text;
+            },
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'OpenSans',
@@ -65,6 +70,9 @@ class _SignupScreenState extends State<SignupScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            onChanged: (Text){
+              emailId = Text;
+            },
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.white,
@@ -136,8 +144,11 @@ class _SignupScreenState extends State<SignupScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: passwordController,
+            // controller: passwordController,
             obscureText: true,
+            onChanged: (Text){
+              passWord = Text;
+            },
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'OpenSans',
@@ -172,7 +183,10 @@ class _SignupScreenState extends State<SignupScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: confirmPasswordController,
+            // controller: confirmPasswordController,
+            onChanged: (Text){
+              confirmPassword = Text;
+            },
             obscureText: true,
             style: TextStyle(
               color: Colors.white,

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:metropay_test/screens/PaymentSelectionButton.dart';
-import 'package:metropay_test/screens/walletbutton.dart';
-
 class RedirectButton extends StatefulWidget {
   @override
   _RedirectButtonState createState() => _RedirectButtonState();
@@ -15,7 +12,7 @@ class _RedirectButtonState extends State<RedirectButton> {
 
   Widget _redirect() {
     return Card(
-      margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0),
+      margin: EdgeInsets.symmetric(vertical: 15.0),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20.0, 10.0, 15.0, 10.0),
         child: Column(
@@ -25,7 +22,7 @@ class _RedirectButtonState extends State<RedirectButton> {
             Text(
               'Redirected to third party gateway.......',
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 12.2,
                 letterSpacing: 0.8,
                 fontFamily: 'OpenSans',
                 fontWeight: FontWeight.bold,
@@ -51,9 +48,8 @@ class _RedirectButtonState extends State<RedirectButton> {
       child: RaisedButton(
         elevation: 4.0,
         onPressed: () {
-          Navigator.push(
+          Navigator.pop(
             context,
-            MaterialPageRoute(builder: (context) => PaymentSelectionButton()),
           );
 
         },
@@ -67,7 +63,7 @@ class _RedirectButtonState extends State<RedirectButton> {
           style: TextStyle(
 //            color: Color(0xFF527DAA),
             letterSpacing: 1.5,
-            fontSize: 16.0,
+            fontSize: 15.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans',
           ),
@@ -104,7 +100,7 @@ class _RedirectButtonState extends State<RedirectButton> {
           style: TextStyle(
 //            color: Color(0xFF527DAA),
             letterSpacing: 1.5,
-            fontSize: 16.0,
+            fontSize: 15.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans',
           ),
@@ -149,6 +145,7 @@ class _RedirectButtonState extends State<RedirectButton> {
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Text(
                         'MetroPay',
@@ -161,7 +158,7 @@ class _RedirectButtonState extends State<RedirectButton> {
                       ),
                       SizedBox(height: 200.0),
                       _redirect(),
-                    SizedBox(height: 180.0),
+                    SizedBox(height: 200.0),
                     _backBtn(),
                     _gobackBtn(),
 //                      SizedBox(height: 10.0),

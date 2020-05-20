@@ -10,6 +10,8 @@ class ForgetScreen extends StatefulWidget {
 
 class _ForgetScreenState extends State<ForgetScreen> {
 
+  String emailId;
+
 //  Widget _buildMobileNumberTF() {
 //    return Column(
 //      crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,6 +62,9 @@ class _ForgetScreenState extends State<ForgetScreen> {
           height: 60.0,
           child: TextField(
             keyboardType: TextInputType.emailAddress,
+            onChanged: (Text){
+              emailId = Text;
+            },
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'OpenSans',
