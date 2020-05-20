@@ -40,9 +40,16 @@ class _HomeButtonState extends State<HomeButton> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: /*boardtoggling(_travelling)*/(){
-          FlutterNfcReader.read().then((response) {
-            print(response.content);
-          });
+          if(boardingPoint=='Boarding Point'){
+             FlutterNfcReader.read().then((response) {
+              print(response.content);
+            });
+            boardingPoint="Station A";
+          }
+          else{
+            return null;
+          }
+          setState(() {});
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -78,10 +85,19 @@ class _HomeButtonState extends State<HomeButton> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: /*destintoggling(_travelling)*/(){
-          FlutterNfcReader.read().then((response) {
-            Toast.show("Working!!!", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
-//            print(response.content);
-          });
+          if(boardingPoint != 'Boarding Point'){
+             FlutterNfcReader.read().then((response) {
+              Toast.show("Working!!!", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+              print(response.content);
+            });
+            destinationPoint="Station B";
+          }
+          setState(() {});
+        },
+        onLongPress: () {
+            boardingPoint = 'Boarding Point';
+            destinationPoint = 'Destination Point';
+            setState(() {});
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
