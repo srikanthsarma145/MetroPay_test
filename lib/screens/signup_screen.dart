@@ -70,6 +70,7 @@ class _SignupScreenState extends State<SignupScreen> {
         Form(
           key: _formKey,
         child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
           children : <Widget>[
             Text(
               'Email',
