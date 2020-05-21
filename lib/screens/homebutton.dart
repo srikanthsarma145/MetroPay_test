@@ -95,9 +95,11 @@ class _HomeButtonState extends State<HomeButton> {
           setState(() {});
         },
         onLongPress: () {
+          if(destinationPoint!='Destination Point') {
             boardingPoint = 'Boarding Point';
             destinationPoint = 'Destination Point';
             setState(() {});
+          }
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
