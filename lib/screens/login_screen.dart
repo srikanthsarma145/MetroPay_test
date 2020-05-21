@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:metropay_test/utilities/constants.dart';
+import 'package:metropay_test/utilities/loading.dart';
 import './signup_screen.dart';
 import './forgetpassword_screen.dart';
 import './homepage_screen.dart';
@@ -20,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   // final passwordController = TextEditingController();
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 //  String user,pass;
   String eMail = '';
   String passWord = '';
@@ -221,9 +223,11 @@ class _LoginScreenState extends State<LoginScreen> {
         elevation: 4.0,
         onPressed: () async{
           if(_formKey.currentState.validate()){
+            setState(() => loading = true);
             dynamic result = await _auth.signInWithEmailAndPassword(eMail, passWord);
             if(result == null) {
               setState(() {
+                loading = false;
                 error = 'incorrect email or password';
                 Toast.show(error, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
               });
@@ -304,7 +308,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
