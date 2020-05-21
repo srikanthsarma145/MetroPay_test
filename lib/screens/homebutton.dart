@@ -216,7 +216,7 @@ class _HomeButtonState extends State<HomeButton> {
                       _destinationPointBtn(),
                       SizedBox(height: 10.0),
                       Text(
-                        'Note: Please make sure that your phone consists of NFC feature and it is enabled.Press the buttons at boarding and destination points respectively to scan the details.',
+                        'Note:\n 1. Please make sure that your phone consists of NFC feature and it is enabled.Press the buttons at boarding and destination points respectively to scan the details.\n 2. On scanning both boarding and destination points long press destination point button to complete the journey and calculate the fare.',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'OpenSans',
