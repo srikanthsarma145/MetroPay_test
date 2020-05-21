@@ -67,13 +67,17 @@ class _SignupScreenState extends State<SignupScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Email',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
+        Form(
           key: _formKey,
+        child: Column(
+          children : <Widget>[
+            Text(
+              'Email',
+              style: kLabelStyle,
+            ),
+            SizedBox(height: 10.0),
+            Container(
+//          key: _formKey,
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
@@ -99,6 +103,43 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
           ),
         ),
+            SizedBox(height: 30.0),
+            Text(
+          'Password',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+//          key: _formKey,
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextFormField(
+            validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long' : null,
+            // controller: passwordController,
+            obscureText: true,
+            onChanged: (val){
+              setState(() => passWord = val);
+            },
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.vpn_key,
+                color: Colors.white,
+              ),
+              hintText: 'Enter your Password',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+    ]
+        )
+    )
       ],
     );
   }
@@ -139,46 +180,46 @@ class _SignupScreenState extends State<SignupScreen> {
 //    );
 //  }
 
-  Widget _buildPasswordTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Password',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          key: _formKey,
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long' : null,
-            // controller: passwordController,
-            obscureText: true,
-            onChanged: (val){
-              setState(() => passWord = val);
-            },
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.vpn_key,
-                color: Colors.white,
-              ),
-              hintText: 'Enter your Password',
-              hintStyle: kHintTextStyle,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+//  Widget _buildPasswordTF() {
+//    return Column(
+//      crossAxisAlignment: CrossAxisAlignment.start,
+//      children: <Widget>[
+//        Text(
+//          'Password',
+//          style: kLabelStyle,
+//        ),
+//        SizedBox(height: 10.0),
+//        Container(
+//          key: _formKey,
+//          alignment: Alignment.centerLeft,
+//          decoration: kBoxDecorationStyle,
+//          height: 60.0,
+//          child: TextFormField(
+//            validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long' : null,
+//            // controller: passwordController,
+//            obscureText: true,
+//            onChanged: (val){
+//              setState(() => passWord = val);
+//            },
+//            style: TextStyle(
+//              color: Colors.white,
+//              fontFamily: 'OpenSans',
+//            ),
+//            decoration: InputDecoration(
+//              border: InputBorder.none,
+//              contentPadding: EdgeInsets.only(top: 14.0),
+//              prefixIcon: Icon(
+//                Icons.vpn_key,
+//                color: Colors.white,
+//              ),
+//              hintText: 'Enter your Password',
+//              hintStyle: kHintTextStyle,
+//            ),
+//          ),
+//        ),
+//      ],
+//    );
+//  }
 
 //  Widget _buildConfirmPasswordTF() {
 //    return Column(
@@ -227,11 +268,11 @@ class _SignupScreenState extends State<SignupScreen> {
       child: RaisedButton(
         elevation: 4.0,
           onPressed: () async{
-//            Navigator.pop(
-//              context,
-//            );
             if(_formKey.currentState.validate()){
               dynamic result = await _auth.registerWithEmailAndPassword(eMail, passWord);
+              Navigator.pop(
+              context,
+            );
               if(result == null) {
                 setState(() {
                   error = 'Please enter a valid email';
@@ -311,8 +352,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       _buildEmailTF(),
 //                      SizedBox(height: 25.0),
 //                      _buildMobileNumberTF(),
-                      SizedBox(height: 30.0),
-                      _buildPasswordTF(),
+//                      SizedBox(height: 30.0),
+//                      _buildPasswordTF(),
 //                      SizedBox(height: 25.0),
 //                      _buildConfirmPasswordTF(),
                       SizedBox(height: 5.0),

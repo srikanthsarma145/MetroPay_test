@@ -33,44 +33,83 @@ class _LoginScreenState extends State<LoginScreen> {
 //    super.dispose();
 //  }
 
-Widget _buildEmailIdTF() {
+  Widget _buildEmailIdTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Email',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          key: _formKey,
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            validator: (val) => val.isEmpty ? 'Enter an email' : null,
-            // controller: usernameController,
-            keyboardType: TextInputType.emailAddress,
-            onChanged: (val){
-              setState(() => eMail = val);
-//              user = Text;
-            },
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.alternate_email,
-                color: Colors.white,
-              ),
-              hintText: 'Enter your email',
-              hintStyle: kHintTextStyle,
-            ),
-          ),
-        ),
+        Form(
+            key: _formKey,
+            child: Column(
+                children : <Widget>[
+                  Text(
+                    'Email',
+                    style: kLabelStyle,
+                  ),
+                  SizedBox(height: 10.0),
+                  Container(
+//          key: _formKey,
+                    alignment: Alignment.centerLeft,
+                    decoration: kBoxDecorationStyle,
+                    height: 60.0,
+                    child: TextFormField(
+                      validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                      onChanged: (val){
+                        setState(() => eMail = val);
+                      },
+                      keyboardType: TextInputType.emailAddress,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'OpenSans',
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.only(top: 14.0),
+                        prefixIcon: Icon(
+                          Icons.alternate_email,
+                          color: Colors.white,
+                        ),
+                        hintText: 'Enter your Email',
+                        hintStyle: kHintTextStyle,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30.0),
+                  Text(
+                    'Password',
+                    style: kLabelStyle,
+                  ),
+                  SizedBox(height: 10.0),
+                  Container(
+//          key: _formKey,
+                    alignment: Alignment.centerLeft,
+                    decoration: kBoxDecorationStyle,
+                    height: 60.0,
+                    child: TextFormField(
+                      validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long' : null,
+                      // controller: passwordController,
+                      obscureText: true,
+                      onChanged: (val){
+                        setState(() => passWord = val);
+                      },
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'OpenSans',
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.only(top: 14.0),
+                        prefixIcon: Icon(
+                          Icons.vpn_key,
+                          color: Colors.white,
+                        ),
+                        hintText: 'Enter your Password',
+                        hintStyle: kHintTextStyle,
+                      ),
+                    ),
+                  ),
+                ]
+            )
+        )
       ],
     );
   }
@@ -111,47 +150,47 @@ Widget _buildEmailIdTF() {
   //   );
   // }
 
-  Widget _buildPasswordTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Password',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          key: _formKey,
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long' : null,
-            // controller: passwordController,
-            obscureText: true,
-            onChanged: (val){
-              setState(() => passWord = val);
-            },
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.vpn_key,
-                color: Colors.white,
-              ),
-              hintText: 'Enter your Password',
-              hintStyle: kHintTextStyle,
-            ),
-            keyboardType: TextInputType.text,
-          ),
-        ),
-      ],
-    );
-  }
+//  Widget _buildPasswordTF() {
+//    return Column(
+//      crossAxisAlignment: CrossAxisAlignment.start,
+//      children: <Widget>[
+//        Text(
+//          'Password',
+//          style: kLabelStyle,
+//        ),
+//        SizedBox(height: 10.0),
+//        Container(
+//          key: _formKey,
+//          alignment: Alignment.centerLeft,
+//          decoration: kBoxDecorationStyle,
+//          height: 60.0,
+//          child: TextFormField(
+//            validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long' : null,
+//            // controller: passwordController,
+//            obscureText: true,
+//            onChanged: (val){
+//              setState(() => passWord = val);
+//            },
+//            style: TextStyle(
+//              color: Colors.white,
+//              fontFamily: 'OpenSans',
+//            ),
+//            decoration: InputDecoration(
+//              border: InputBorder.none,
+//              contentPadding: EdgeInsets.only(top: 14.0),
+//              prefixIcon: Icon(
+//                Icons.vpn_key,
+//                color: Colors.white,
+//              ),
+//              hintText: 'Enter your Password',
+//              hintStyle: kHintTextStyle,
+//            ),
+//            keyboardType: TextInputType.text,
+//          ),
+//        ),
+//      ],
+//    );
+//  }
 
   Widget _buildForgotPasswordBtn() {
     return Container(
@@ -310,8 +349,8 @@ Widget _buildEmailIdTF() {
                       ),
                       SizedBox(height: 30.0),
                       _buildEmailIdTF(),
-                      SizedBox(height: 30.0),
-                      _buildPasswordTF(),
+//                      SizedBox(height: 30.0),
+//                      _buildPasswordTF(),
                       _buildForgotPasswordBtn(),
                       _buildLoginBtn(),
                       _buildSignUpBtn(),
