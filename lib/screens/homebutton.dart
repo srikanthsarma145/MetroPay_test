@@ -14,6 +14,7 @@ class _HomeButtonState extends State<HomeButton> {
 //  var boardvalue;
 //  var destinvalue;
 
+  final List<String> stations = ['1', '2', '3', '4'];
 
   String boardingPoint = 'Boarding Point';
   String destinationPoint = 'Destination Point';
