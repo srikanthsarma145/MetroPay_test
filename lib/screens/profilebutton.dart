@@ -7,6 +7,7 @@ import './editdetailsbutton.dart';
 import 'package:metropay_test/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:metropay_test/services/database.dart';
+import 'package:photo_view/photo_view.dart';
 
 class ProfileButton extends StatefulWidget {
 
@@ -89,8 +90,15 @@ class _ProfileButtonState extends State<ProfileButton> {
                   Container(height: 4, color: Color(0xFF61A4F1),
                     margin: const EdgeInsets.only(left: 0.0, right: 190.0),),
                   SizedBox(height: 15.0),
+                  Container(
+                    height: 100,
+                   child: Icon(Icons.account_box,
+                     color: Colors.white,
+                   size: 100,),
+                  ),
+                  SizedBox(height: 15.0),
                   Text(
-              'Name    : '+userData.name+'\n\n'+'Balance : '+userData.balance.toString(),
+                    'Name    : '+userData.name+'\n\n'+'Balance : '+userData.balance.toString(),
                     style: TextStyle(
                       fontSize: 16.0,
                       letterSpacing: 0.8,
