@@ -4,7 +4,7 @@ import 'package:metropay_test/utilities/constants.dart';
 import 'package:metropay_test/utilities/loading.dart';
 import './signup_screen.dart';
 import './forgetpassword_screen.dart';
-import './homepage_screen.dart';
+//import './homepage_screen.dart';
 import 'package:toast/toast.dart';
 import 'package:metropay_test/services/auth.dart';
 
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 30.0),
                   Text(
                     'Password',
                     style: kLabelStyle,
@@ -306,73 +306,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildSignInWithText() {
-    return Column(
-      children: <Widget>[
-        Text(
-          '- OR -',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        SizedBox(height: 20.0),
-        Text(
-          'Sign in with',
-          style: kLabelStyle,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSocialBtn(Function onTap, AssetImage logo) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 60.0,
-        width: 60.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              offset: Offset(0, 2),
-              blurRadius: 6.0,
-            ),
-          ],
-          image: DecorationImage(
-            image: logo,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSocialBtnRow() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 30.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _buildSocialBtn(
-                () => print('Login with Facebook'),
-            AssetImage(
-              'assets/logos/facebook.jpg',
-            ),
-          ),
-          _buildSocialBtn(
-                () => print('Login with Google'),
-            AssetImage(
-              'assets/logos/google.jpg',
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return loading ? Loading() : Scaffold(
@@ -405,7 +338,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 100.0,
+                    vertical: 140.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -419,16 +352,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 30.0),
                       _buildEmailIdTF(),
 //                      SizedBox(height: 30.0),
 //                      _buildPasswordTF(),
                       _buildForgotPasswordBtn(),
                       _buildLoginBtn(),
                       _buildSignUpBtn(),
-                      SizedBox(height: 20.0),
-                      _buildSignInWithText(),
-                      _buildSocialBtnRow(),
                     ],
                   ),
                 ),
