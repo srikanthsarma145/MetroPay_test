@@ -93,7 +93,6 @@ class _ProfileButtonState extends State<ProfileButton> {
                   Container(
                     height: 100,
                    child: Icon(Icons.account_box,
-                     color: Colors.white,
                    size: 100,),
                   ),
                   SizedBox(height: 15.0),
